@@ -1,10 +1,13 @@
-import './App.css'
+import { RoutesMain as Routes} from "./routes"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App() {
 
   return (
-    <>     
-    <h1 className="text-3xl font-bold underline">Testing</h1> 
+    <>
+      <Routes/>
+      <ToastContainer/>
     </>
   )
 }
