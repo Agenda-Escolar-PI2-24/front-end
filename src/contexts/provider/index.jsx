@@ -1,14 +1,13 @@
-/* eslint-disable react/prop-types */
-// import { ScheduleProvider } from "../scheduleContext";
+import { DashProvider } from "../dashboardContext";
 import { UserProvider } from "../userContext";
 
 
 export const Providers = ({ children }) => {
     return (
       <UserProvider>
-        {/* <ScheduleProvider> */}
+        <DashProvider>
          {children}
-        {/* </ScheduleProvider> */}
+        </DashProvider>
       </UserProvider>
     );
   };

@@ -49,7 +49,7 @@ export const LoginPage = () => {
     };
 
     return (
-        <main>
+        <main id="main-login">
             <section className="section-form">
                 <h2>Login</h2>
                 <FormControl fullWidth={true}>

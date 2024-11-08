@@ -52,7 +52,7 @@ export const RegisterPage = () => {
     };
 
     return (
-        <main>
+        <main id="main-register">
             <section className="section-form">
                 <h2>Cadastro</h2>
                 <FormControl fullWidth={true}>

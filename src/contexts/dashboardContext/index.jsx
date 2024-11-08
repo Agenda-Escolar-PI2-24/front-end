@@ -1,10 +1,17 @@
-/* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
-import { api } from "../../services/api";
+// import { api } from "../../services/api";
 
-const UserContext = createContext({})
+export const DashContext = createContext({})
 
-export const UserProvider = ({ children }) => {
+export const DashProvider = ({ children }) => {
+    const [modalAddOpen, setModalAddOpen] = useState(false)
+    
+    const handleAddClickOpen = () => {     
+      setModalAddOpen(true);
+    };
+    const handleAddClose = () => {
+      setModalAddOpen(false);
+    };
 
     // const [schedules, setSchedules] = useState([])
 
@@ -30,8 +37,12 @@ export const UserProvider = ({ children }) => {
     // }
   
     return (
-      <UserContext.Provider value={{}}>
+      <DashContext.Provider value={{
+          modalAddOpen, 
+          handleAddClickOpen, 
+          handleAddClose
+        }}>
         {children}
-      </UserContext.Provider>
+      </DashContext.Provider>
     );
   };
