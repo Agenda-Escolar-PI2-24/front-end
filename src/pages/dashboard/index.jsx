@@ -1,17 +1,17 @@
 import { useContext, useEffect } from "react";
-import CustomizedDialogs from "../../components/modalAdd";
 import Schedule from "../../components/schedule"
 import "./styles.css"
 import { Button } from '@mui/material';
 import { DashContext } from "../../contexts/dashboardContext";
 import { UserContext } from "../../contexts/userContext";
+import ModalAdd from "../../components/modalAdd";
+import ModalEdit from "../../components/modalEdit";
 
 
 export const Dashboard = () => {
     
     const {handleAddClickOpen} = useContext(DashContext)
     const {autoLogin, logout} = useContext(UserContext)
-
     
     useEffect(()=>{
         autoLogin();
@@ -26,7 +26,7 @@ export const Dashboard = () => {
                         variant="contained" 
                         color="success" 
                         onClick={handleAddClickOpen}>
-                            Atividade
+                            Nova Atividade
                         </Button>
                     <Button 
                         variant="outlined" 
@@ -39,7 +39,8 @@ export const Dashboard = () => {
             <div id="schedule-div">
                 <Schedule></Schedule>
             </div>
-            <CustomizedDialogs props={open}></CustomizedDialogs>
+            <ModalAdd props={open}></ModalAdd>
+            <ModalEdit props={open}></ModalEdit>
         </main>
     )
 }
