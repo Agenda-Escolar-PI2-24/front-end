@@ -32,7 +32,7 @@ export const RegisterPage = () => {
                         required="true" 
                         margin="dense"
                         type="text" 
-                        label="Nome Completo" 
+                        label="Username" 
                         variant="outlined" 
                         onChange={(e) => setUserName(e.target.value)}
                         error={Boolean(errors.name)}
