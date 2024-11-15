@@ -31,7 +31,7 @@ export default function ModalAdd() {
       setDate,
       setClassCode,
       content,
-      checkContentLength,
+      setContent,
       errors,
       saveActivity,
       } = useContext(DashContext) 
@@ -115,7 +115,7 @@ export default function ModalAdd() {
                   minRows={5}
                   color='success'
                   value={content}
-                  onChange={(e) => checkContentLength(e.target.value, 'content')}
+                  onChange={(e) => setContent(e.target.value)}
                   error={Boolean(errors.content)}
                   helperText={errors.content}
               />

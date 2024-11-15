@@ -33,14 +33,16 @@ export default function ModalEdit() {
       setTitle,
       date,
       setDate,
+      classCode,
       setClassCode,
       content,
+      setContent,
       contemplated,
-      satisfactory,
       setSatisfactory,
+      satisfactory,
       allowSatisfactory,
       obs,
-      checkContentLength,
+      setObs,
       errors,
       editActivity,
       checkRadios
@@ -108,6 +110,7 @@ export default function ModalEdit() {
                   variant='outlined'                  
                   color='success' 
                   sx={{width: 0.98/2}}
+                  value={classCode}
                   onChange={(e) => setClassCode(e.target.value)}
                   error={Boolean(errors.classCode)}
                   helperText={errors.classCode}
@@ -121,10 +124,10 @@ export default function ModalEdit() {
                   label='Conteúdo Planejado'
                   variant='outlined' 
                   multiline={true}
-                  minRows={5}
+                  minRows={3}
                   color='success'
                   value={content}
-                  onChange={(e) => checkContentLength(e.target.value, 'content')}
+                  onChange={(e) => setContent(e.target.value)}
                   error={Boolean(errors.content)}
                   helperText={errors.content}
               />
@@ -133,18 +136,17 @@ export default function ModalEdit() {
                     <FormLabel>Contemplado</FormLabel>
                     <RadioGroup 
                         row 
-                        onChange={checkRadios} 
                         value={contemplated}
                         >
                         <FormControlLabel
                         value={true}
-                        control={<Radio />}
+                        control={<Radio onChange={checkRadios}/>}
                         label="Sim"
                         labelPlacement="end"
                         />
                         <FormControlLabel
                         value={false}
-                        control={<Radio />}
+                        control={<Radio onChange={checkRadios}/>}
                         label="Não"
                         labelPlacement="end"
                         />
@@ -154,20 +156,23 @@ export default function ModalEdit() {
                     <FormLabel>Satisfatório</FormLabel>
                     <RadioGroup 
                         row
-                        onChange={setSatisfactory}
                         value={satisfactory}
-                        disabled={true}
-                        >
-                        
+                        >                        
                         <FormControlLabel
                         value={true}
-                        control={<Radio disabled={!allowSatisfactory}/>}
+                        control={<Radio
+                          disabled={!allowSatisfactory}
+                          onChange={(e) => setSatisfactory(Boolean(e.target.value))}
+                        />}
                         label="Sim"
                         labelPlacement="end"
                         />
                         <FormControlLabel
                         value={false}
-                        control={<Radio disabled={!allowSatisfactory}/>}
+                        control={<Radio
+                          disabled={!allowSatisfactory}
+                          onChange={(e) => setSatisfactory(Boolean(e.target.value))}
+                        />}
                         label="Não"
                         labelPlacement="end"
                         />
@@ -182,13 +187,11 @@ export default function ModalEdit() {
                   label='Observações'
                   variant={allowSatisfactory ? 'outlined' : 'filled'}
                   multiline={true}
-                  minRows={5}
+                  minRows={3}
                   color='success'
                   value={obs}
-                  disabled={allowSatisfactory ? false : true}
-                  onChange={(e) => checkContentLength(e.target.value, 'obs')}
-                  error={Boolean(errors.obs)}
-                  helperText={errors.obs}
+                  disabled={!allowSatisfactory}
+                  onChange={(e) => setObs(e.target.value)}
               />
         </FormControl>
         </DialogContent>

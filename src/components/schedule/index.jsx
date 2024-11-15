@@ -11,13 +11,12 @@ export default function Schedule() {
 
   const {handleAddClickOpen, handleEditClickOpen, events} = useContext(DashContext)
 
-
-  return (
+  return (    
     <FullCalendar
       plugins={[ dayGridPlugin, bootstrap5Plugin, interactionPlugin ]}
       initialView="dayGridMonth"
       themeSystem='bootstrap5'
-      height={500}      
+      height={500}     
       locale={'pt-br'}
       editable={true}
       dateClick={handleAddClickOpen}

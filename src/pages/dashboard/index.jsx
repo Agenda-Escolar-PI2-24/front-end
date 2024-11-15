@@ -10,11 +10,11 @@ import ModalEdit from "../../components/modalEdit";
 
 export const Dashboard = () => {
     
-    const {handleAddClickOpen} = useContext(DashContext)
-    const {autoLogin, logout} = useContext(UserContext)
-    
-    useEffect(()=>{
-        autoLogin();
+    const {handleAddClickOpen, getEvents} = useContext(DashContext)
+    const {logout} = useContext(UserContext)
+
+    useEffect(() => {
+        getEvents()
     }, [])
 
     return (
